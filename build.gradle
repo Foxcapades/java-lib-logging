@@ -106,11 +106,45 @@ dependencies {
   )
 }
 
+/*
+ * Tasks
+ */
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '3.0'
+  distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
+task sourceJar(type: Jar, dependsOn: classes) {
+  classifier = 'sources'
+  from sourceSets.main.allSource
+}
+
+task javadoc(overwrite: true, type: Javadoc) {
+  source = sourceSets.main.allJava
+  destinationDir = file("${project.projectDir}/docs/")
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+  classifier = 'javadoc'
+  from javadoc.destinationDir
+}
+
+artifacts {
+  archives sourceJar
+  archives javadocJar
+}
+
 publishing {
   repositories { maven { url "https://api.bintray.com/maven/vpx/maven/${config.name}/;publish=1" } }
   publications {
     maven(MavenPublication) {
+
       from components.java;
+
+      artifact sourceJar
+      artifact javadocJar
+
       pom.withXml {
         { Node project ->
           new Wrap(project)
@@ -147,13 +181,3 @@ publishing {
     }
   }
 }
-
-/*
- * Tasks
- */
-
-task wrapper(type: Wrapper) {
-  gradleVersion = '3.0'
-  distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
-}
-
