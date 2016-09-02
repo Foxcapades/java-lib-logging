@@ -15,10 +15,10 @@
  */
 package io.vulpine.logging;
 
-public abstract class AbstractLogger implements LoggerInterface
+abstract class AbstractLogger implements Logger
 {
   @Override
-  public void trace( final Class clazz, final Object... arguments )
+  public Logger trace( final Class clazz, final Object... arguments )
   {
     final StackTraceElement[] trace;
     final String method;
@@ -43,5 +43,7 @@ public abstract class AbstractLogger implements LoggerInterface
       build.toString(),
       trace[Math.min(trace.length, 2)].getLineNumber()
     );
+
+    return this;
   }
 }

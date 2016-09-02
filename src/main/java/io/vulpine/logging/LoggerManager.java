@@ -20,9 +20,9 @@ import java.util.Map;
 
 public class LoggerManager
 {
-  private final static Map< String, LoggerInterface > loggers = new HashMap < String, LoggerInterface >();
+  private final static Map< String, Logger > loggers = new HashMap < String, Logger >();
 
-  public static LoggerInterface getLogger( final String name )
+  public static Logger getLogger( final String name )
   {
     if (!loggers.containsKey(name)) {
       loggers.put(name, fetchImplementation(name));
@@ -31,27 +31,23 @@ public class LoggerManager
     return loggers.get(name);
   }
 
-  private static LoggerInterface fetchImplementation( final String name )
+  private static Logger fetchImplementation( final String name )
   {
-    final LoggerInterface logger;
+    try { return tryLog4j2(name); } catch ( ClassNotFoundException ignored ) {}
+    try { return trySlf4j(name); } catch ( ClassNotFoundException ignored ) {}
 
-    try {
-      return trySlf4j(name);
-    } catch ( ClassNotFoundException ignored ) {
-    }
-
-    logger = new NativeLogger(name);
-    return logger;
+    return new NativeLogger(name).debug("Logging using Java Logger");
   }
 
-  private static LoggerInterface trySlf4j( final String name ) throws ClassNotFoundException
+  private static Logger trySlf4j( final String name ) throws ClassNotFoundException
   {
-    final LoggerInterface logger;
-
     Class.forName("org.slf4j.Logger");
-    logger = new Slf4jLogger(name);
-    logger.info("Logging using SLF4J");
+    return new Slf4jLogger(name).debug("Logging using SLF4J");
+  }
 
-    return logger;
+  private static Logger tryLog4j2( final String name ) throws ClassNotFoundException
+  {
+    Class.forName("org.apache.logging.log4j.Logger");
+    return new Log4j2Logger(name).debug("Logging using Log4J v2");
   }
 }

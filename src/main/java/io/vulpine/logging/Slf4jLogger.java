@@ -15,225 +15,294 @@
  */
 package io.vulpine.logging;
 
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Slf4jLogger extends AbstractLogger
+class Slf4jLogger extends AbstractLogger
 {
-  final Logger logger;
+  private final org.slf4j.Logger logger;
 
-  public Slf4jLogger( final String name )
+  Slf4jLogger( final String name )
   {
     logger = LoggerFactory.getLogger(name);
   }
 
   @Override
-  public void trace( final String message )
+  public Logger trace( final String message )
   {
     logger.trace(message);
+
+    return this;
   }
 
   @Override
-  public void trace( final String message, final Object argument )
+  public Logger trace( final String message, final Object argument )
   {
     logger.trace( message, argument );
+
+    return this;
   }
 
   @Override
-  public void trace( final String message, final Object argument1, final Object argument2 )
+  public Logger trace( final String message, final Object argument1, final Object argument2 )
   {
     logger.trace( message, argument1, argument2 );
+
+    return this;
   }
 
   @Override
-  public void trace( final String message, final Object... arguments )
+  public Logger trace( final String message, final Object... arguments )
   {
     logger.trace( message, arguments );
+
+    return this;
   }
 
   @Override
-  public void trace( final String message, final Throwable throwable )
+  public Logger trace( final String message, final Throwable throwable )
   {
     logger.trace( message, throwable );
+
+    return this;
   }
 
   @Override
-  public void debug( final String message )
+  public Logger debug( final String message )
   {
     logger.debug( message );
+
+    return this;
   }
 
   @Override
-  public void debug( final String message, final Object argument )
+  public Logger debug( final String message, final Object argument )
   {
     logger.debug( message, argument );
+
+    return this;
   }
 
   @Override
-  public void debug( final String message, final Object argument1, final Object argument2 )
+  public Logger debug( final String message, final Object argument1, final Object argument2 )
   {
     logger.debug( message, argument1, argument2 );
+
+    return this;
   }
 
   @Override
-  public void debug( final String message, final Object... arguments )
+  public Logger debug( final String message, final Object... arguments )
   {
     logger.debug( message, arguments );
+
+    return this;
   }
 
   @Override
-  public void debug( final String message, final Throwable throwable )
+  public Logger debug( final String message, final Throwable throwable )
   {
     logger.debug( message, throwable );
+
+    return this;
   }
 
   @Override
-  public void info( final String message )
+  public Logger info( final String message )
   {
     logger.info( message );
+
+    return this;
   }
 
   @Override
-  public void info( final String message, final Object argument )
+  public Logger info( final String message, final Object argument )
   {
     logger.info( message, argument );
+
+    return this;
   }
 
   @Override
-  public void info( final String message, final Object argument1, final Object argument2 )
+  public Logger info( final String message, final Object argument1, final Object argument2 )
   {
     logger.info( message, argument1, argument2 );
+
+    return this;
   }
 
   @Override
-  public void info( final String message, final Object... arguments )
+  public Logger info( final String message, final Object... arguments )
   {
     logger.info( message, arguments );
+
+    return this;
   }
 
   @Override
-  public void info( final String message, final Throwable throwable )
+  public Logger info( final String message, final Throwable throwable )
   {
     logger.info( message, throwable );
+
+    return this;
   }
 
   @Override
-  public void notice( final String message )
+  public Logger notice( final String message )
   {
     logger.warn( message );
+
+    return this;
   }
 
   @Override
-  public void notice( final String message, final Object argument )
+  public Logger notice( final String message, final Object argument )
   {
     logger.warn( message, argument );
+
+    return this;
   }
 
   @Override
-  public void notice( final String message, final Object argument1, final Object argument2 )
+  public Logger notice( final String message, final Object argument1, final Object argument2 )
   {
     logger.warn( message, argument1, argument2 );
+
+    return this;
   }
 
   @Override
-  public void notice( final String message, final Object... arguments )
+  public Logger notice( final String message, final Object... arguments )
   {
     logger.warn( message, arguments );
+
+    return this;
   }
 
   @Override
-  public void notice( final String message, final Throwable throwable )
+  public Logger notice( final String message, final Throwable throwable )
   {
     logger.warn( message, throwable );
+
+    return this;
   }
 
   @Override
-  public void warn( final String message )
+  public Logger warn( final String message )
   {
     logger.warn( message );
+
+    return this;
   }
 
   @Override
-  public void warn( final String message, final Object argument )
+  public Logger warn( final String message, final Object argument )
   {
     logger.warn( message, argument );
+
+    return this;
   }
 
   @Override
-  public void warn( final String message, final Object argument1, final Object argument2 )
+  public Logger warn( final String message, final Object argument1, final Object argument2 )
   {
     logger.warn( message, argument1, argument2 );
+
+    return this;
   }
 
   @Override
-  public void warn( final String message, final Object... arguments )
+  public Logger warn( final String message, final Object... arguments )
   {
     logger.warn( message, arguments );
+
+    return this;
   }
 
   @Override
-  public void warn( final String message, final Throwable throwable )
+  public Logger warn( final String message, final Throwable throwable )
   {
     logger.warn( message, throwable );
+
+    return this;
   }
 
   @Override
-  public void error( final String message )
+  public Logger error( final String message )
   {
     logger.error( message );
+
+    return this;
   }
 
   @Override
-  public void error( final String message, final Object argument )
+  public Logger error( final String message, final Object argument )
   {
     logger.error( message, argument );
+
+    return this;
   }
 
   @Override
-  public void error( final String message, final Object argument1, final Object argument2 )
+  public Logger error( final String message, final Object argument1, final Object argument2 )
   {
     logger.error( message, argument1, argument2 );
+
+    return this;
   }
 
   @Override
-  public void error( final String message, final Object... arguments )
+  public Logger error( final String message, final Object... arguments )
   {
     logger.error( message, arguments );
+
+    return this;
   }
 
   @Override
-  public void error( final String message, final Throwable throwable )
+  public Logger error( final String message, final Throwable throwable )
   {
     logger.error( message, throwable );
+
+    return this;
   }
 
   @Override
-  public void fatal( final String message )
+  public Logger fatal( final String message )
   {
     logger.error( message );
+
+    return this;
   }
 
   @Override
-  public void fatal( final String message, final Object argument )
+  public Logger fatal( final String message, final Object argument )
   {
     logger.error( message, argument );
+
+    return this;
   }
 
   @Override
-  public void fatal( final String message, final Object argument1, final Object argument2 )
+  public Logger fatal( final String message, final Object argument1, final Object argument2 )
   {
     logger.error( message, argument1, argument2 );
+
+    return this;
   }
 
   @Override
-  public void fatal( final String message, final Object... arguments )
+  public Logger fatal( final String message, final Object... arguments )
   {
     logger.error( message, arguments );
+
+    return this;
   }
 
   @Override
-  public void fatal( final String message, final Throwable throwable )
+  public Logger fatal( final String message, final Throwable throwable )
   {
     logger.error( message, throwable );
+
+    return this;
   }
 }

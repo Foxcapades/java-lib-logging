@@ -15,232 +15,265 @@
  */
 package io.vulpine.logging;
 
-import java.util.logging.Logger;
-
-public class NativeLogger extends AbstractLogger
+class NativeLogger extends AbstractLogger
 {
-  final Logger logger;
+  private final java.util.logging.Logger logger;
 
-  public NativeLogger( final String name )
+  NativeLogger( final String name )
   {
-    logger = Logger.getLogger(name);
+    logger = java.util.logging.Logger.getLogger(name);
   }
 
   @Override
-  public void trace( final String message )
+  public Logger trace( final String message )
   {
     logger.finest(message);
+    return this;
   }
 
   @Override
-  public void trace( final String message, final Object argument )
+  public Logger trace( final String message, final Object argument )
   {
     logger.finest(String.format(message.replaceAll("\\{\\}", "%s"), argument));
+    return this;
   }
 
   @Override
-  public void trace( final String message, final Object argument1, final Object argument2 )
+  public Logger trace( final String message, final Object argument1, final Object argument2 )
   {
     logger.finest(String.format(message.replaceAll("\\{\\}", "%s"), argument1, argument2));
+    return this;
   }
 
   @Override
-  public void trace( final String message, final Object... arguments )
+  public Logger trace( final String message, final Object... arguments )
   {
     logger.finest(String.format(message.replaceAll("\\{\\}", "%s"), arguments));
+    return this;
   }
 
   @Override
-  public void trace( final String message, final Throwable throwable )
+  public Logger trace( final String message, final Throwable throwable )
   {
     logger.finest(message);
     logger.finest(throwable.toString());
+    return this;
   }
 
 
   @Override
-  public void debug( final String message )
+  public Logger debug( final String message )
   {
     logger.finer(message);
+    return this;
   }
 
   @Override
-  public void debug( final String message, final Object argument )
+  public Logger debug( final String message, final Object argument )
   {
     logger.finer(String.format(message.replaceAll("\\{\\}", "%s"), argument));
+    return this;
   }
 
   @Override
-  public void debug( final String message, final Object argument1, final Object argument2 )
+  public Logger debug( final String message, final Object argument1, final Object argument2 )
   {
     logger.finer(String.format(message.replaceAll("\\{\\}", "%s"), argument1, argument2));
+    return this;
   }
 
   @Override
-  public void debug( final String message, final Object... arguments )
+  public Logger debug( final String message, final Object... arguments )
   {
     logger.finer(String.format(message.replaceAll("\\{\\}", "%s"), arguments));
+    return this;
   }
 
   @Override
-  public void debug( final String message, final Throwable throwable )
+  public Logger debug( final String message, final Throwable throwable )
   {
     logger.finer(message);
     logger.finer(throwable.toString());
+    return this;
   }
 
   @Override
-  public void info( final String message )
+  public Logger info( final String message )
   {
     logger.info(message);
+    return this;
   }
 
   @Override
-  public void info( final String message, final Object argument )
+  public Logger info( final String message, final Object argument )
   {
     logger.info(String.format(message.replaceAll("\\{\\}", "%s"), argument));
+    return this;
   }
 
   @Override
-  public void info( final String message, final Object argument1, final Object argument2 )
+  public Logger info( final String message, final Object argument1, final Object argument2 )
   {
     logger.info(String.format(message.replaceAll("\\{\\}", "%s"), argument1, argument2));
+    return this;
   }
 
   @Override
-  public void info( final String message, final Object... arguments )
+  public Logger info( final String message, final Object... arguments )
   {
     logger.info(String.format(message.replaceAll("\\{\\}", "%s"), arguments));
+    return this;
   }
 
   @Override
-  public void info( final String message, final Throwable throwable )
+  public Logger info( final String message, final Throwable throwable )
   {
     logger.info(message);
     logger.info(throwable.toString());
+    return this;
   }
 
   @Override
-  public void notice( final String message )
+  public Logger notice( final String message )
   {
     logger.warning(message);
+    return this;
   }
 
   @Override
-  public void notice( final String message, final Object argument )
+  public Logger notice( final String message, final Object argument )
   {
     logger.warning(String.format(message.replaceAll("\\{\\}", "%s"), argument));
+    return this;
   }
 
   @Override
-  public void notice( final String message, final Object argument1, final Object argument2 )
+  public Logger notice( final String message, final Object argument1, final Object argument2 )
   {
     logger.warning(String.format(message.replaceAll("\\{\\}", "%s"), argument1, argument2));
+    return this;
   }
 
   @Override
-  public void notice( final String message, final Object... arguments )
+  public Logger notice( final String message, final Object... arguments )
   {
     logger.warning(String.format(message.replaceAll("\\{\\}", "%s"), arguments));
+    return this;
   }
 
   @Override
-  public void notice( final String message, final Throwable throwable )
+  public Logger notice( final String message, final Throwable throwable )
   {
     logger.warning(message);
     logger.warning(throwable.toString());
+    return this;
   }
 
   @Override
-  public void warn( final String message )
+  public Logger warn( final String message )
   {
     logger.warning(message);
+    return this;
   }
 
   @Override
-  public void warn( final String message, final Object argument )
+  public Logger warn( final String message, final Object argument )
   {
     logger.warning(String.format(message.replaceAll("\\{\\}", "%s"), argument));
+    return this;
   }
 
   @Override
-  public void warn( final String message, final Object argument1, final Object argument2 )
+  public Logger warn( final String message, final Object argument1, final Object argument2 )
   {
     logger.warning(String.format(message.replaceAll("\\{\\}", "%s"), argument1, argument2));
+    return this;
   }
 
   @Override
-  public void warn( final String message, final Object... arguments )
+  public Logger warn( final String message, final Object... arguments )
   {
     logger.warning(String.format(message.replaceAll("\\{\\}", "%s"), arguments));
+    return this;
   }
 
   @Override
-  public void warn( final String message, final Throwable throwable )
+  public Logger warn( final String message, final Throwable throwable )
   {
     logger.warning(message);
     logger.warning(throwable.toString());
+    return this;
   }
 
   @Override
-  public void error( final String message )
+  public Logger error( final String message )
   {
     logger.severe(message);
+    return this;
   }
 
   @Override
-  public void error( final String message, final Object argument )
+  public Logger error( final String message, final Object argument )
   {
     logger.severe(String.format(message.replaceAll("\\{\\}", "%s"), argument));
+    return this;
   }
 
   @Override
-  public void error( final String message, final Object argument1, final Object argument2 )
+  public Logger error( final String message, final Object argument1, final Object argument2 )
   {
     logger.severe(String.format(message.replaceAll("\\{\\}", "%s"), argument1, argument2));
+    return this;
   }
 
   @Override
-  public void error( final String message, final Object... arguments )
+  public Logger error( final String message, final Object... arguments )
   {
     logger.severe(String.format(message.replaceAll("\\{\\}", "%s"), arguments));
+    return this;
   }
 
   @Override
-  public void error( final String message, final Throwable throwable )
+  public Logger error( final String message, final Throwable throwable )
   {
     logger.severe(message);
     logger.severe(throwable.toString());
+    return this;
   }
 
   @Override
-  public void fatal( final String message )
+  public Logger fatal( final String message )
   {
     logger.severe(message);
+    return this;
   }
 
   @Override
-  public void fatal( final String message, final Object argument )
+  public Logger fatal( final String message, final Object argument )
   {
     logger.severe(String.format(message.replaceAll("\\{\\}", "%s"), argument));
+    return this;
   }
 
   @Override
-  public void fatal( final String message, final Object argument1, final Object argument2 )
+  public Logger fatal( final String message, final Object argument1, final Object argument2 )
   {
     logger.severe(String.format(message.replaceAll("\\{\\}", "%s"), argument1, argument2));
+    return this;
   }
 
   @Override
-  public void fatal( final String message, final Object... arguments )
+  public Logger fatal( final String message, final Object... arguments )
   {
     logger.severe(String.format(message.replaceAll("\\{\\}", "%s"), arguments));
+    return this;
   }
 
   @Override
-  public void fatal( final String message, final Throwable throwable )
+  public Logger fatal( final String message, final Throwable throwable )
   {
     logger.severe(message);
     logger.severe(throwable.toString());
+    return this;
   }
 }
