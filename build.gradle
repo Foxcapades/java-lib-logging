@@ -29,7 +29,7 @@ def organization = [
 def config = [
   group: "${organization.slug}.lib",
   name: 'logging',
-  version: '0.1.0',
+  version: '0.1.1',
   groupKey: 'Vulpine-IO',
   repo: 'logging',
   site: "${organization.site}/logging",
@@ -95,12 +95,10 @@ repositories {
  * not come with any runtime dependencies.
  */
 configurations {
-  runtime.exclude group: 'org.slf4j'
-  runtime.exclude group: 'org.apache.logging.log4j'
 }
 
 dependencies {
-  compile(
+  compileOnly(
     [ group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.6.2'  ],
     [ group: 'org.slf4j',                name: 'slf4j-api', version: '1.7.21' ]
   )
