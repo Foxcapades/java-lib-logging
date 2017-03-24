@@ -31,6 +31,11 @@ public class LoggerManager
     return loggers.get(name);
   }
 
+  public static Logger getLogger( final Class type )
+  {
+    return getLogger(type.getName());
+  }
+
   private static Logger fetchImplementation( final String name )
   {
     try { return tryLog4j2(name); } catch ( ClassNotFoundException ignored ) {}
