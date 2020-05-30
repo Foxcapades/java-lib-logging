@@ -18,6 +18,10 @@ package io.vulpine.logging;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.vulpine.logging.impl.Log4j2Logger;
+import io.vulpine.logging.impl.NativeLogger;
+import io.vulpine.logging.impl.Slf4jLogger;
+
 public class LoggerManager
 {
   private final static Map< String, Logger > loggers = new HashMap < String, Logger >();

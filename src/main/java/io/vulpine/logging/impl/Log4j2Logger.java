@@ -1,18 +1,19 @@
-package io.vulpine.logging;
+package io.vulpine.logging.impl;
 
+import io.vulpine.logging.Logger;
 import org.apache.logging.log4j.LogManager;
 
-class Log4j2Logger extends AbstractLogger
+public class Log4j2Logger extends AbstractLogger
 {
   private final org.apache.logging.log4j.Logger logger;
 
-  Log4j2Logger( final String name )
+  public Log4j2Logger( final String name )
   {
     logger = LogManager.getLogger(name);
   }
 
   @Override
-  public Logger trace( String message )
+  public Logger trace(String message )
   {
     logger.trace(message);
 

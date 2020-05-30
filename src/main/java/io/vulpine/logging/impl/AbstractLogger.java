@@ -13,9 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.vulpine.logging;
+package io.vulpine.logging.impl;
 
-abstract class AbstractLogger implements Logger
+import io.vulpine.logging.Logger;
+
+public abstract class AbstractLogger implements Logger
 {
   @Override
   public Logger trace( final Class clazz, final Object... arguments )
